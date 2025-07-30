@@ -1,13 +1,16 @@
-name: Ninja
+name: Check Tools
 on:
   workflow_dispatch:
-
+  
 jobs:
   windows:
     runs-on: windows-11-arm
     steps:
-      - name: Inspect ninja
-        shell: cmd
+      - name: System Architecture
+        shell: bash
         run: |
-          ninja --version
-          where ninja
+           echo "Python platform.machine(): $(python -c 'import platform; print(platform.machine())')"
+           echo "Python platform.architecture(): $(python -c 'import platform; print(platform.architecture())')"
+           echo "Python platform.processor(): $(python -c 'import platform; print(platform.processor())')"
+           echo "PowerShell \$env:PROCESSOR_ARCHITECTURE: $PROCESSOR_ARCHITECTURE"
+           echo "PowerShell \$env:PROCESSOR_IDENTIFIER: $PROCESSOR_IDENTIFIER"
