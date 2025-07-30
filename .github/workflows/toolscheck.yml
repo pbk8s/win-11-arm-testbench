@@ -1,0 +1,13 @@
+name: Ninja
+on:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-11-arm
+    steps:
+      - name: Inspect ninja
+        shell: cmd
+        run: |
+          ninja --version
+          where ninja
