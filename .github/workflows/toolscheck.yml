@@ -14,3 +14,4 @@ jobs:
            echo "Python platform.processor(): $(python -c 'import platform; print(platform.processor())')"
            echo "PowerShell \$env:PROCESSOR_ARCHITECTURE: $PROCESSOR_ARCHITECTURE"
            echo "PowerShell \$env:PROCESSOR_IDENTIFIER: $PROCESSOR_IDENTIFIER"
+           echo "Openssl version: $(openssl version)"
