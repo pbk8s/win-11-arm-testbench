@@ -17,13 +17,18 @@ jobs:
            echo "Openssl version: $(openssl version)"
            echo "Python version: $(python --version)"
            echo "Python3 version: $(python3 --version)"
-      - name: Check Windows SKU and version
+      - name: Check Windows DisplayVersion (e.g., 25H2)
         shell: pwsh
         run: |
-          Get-ComputerInfo | Select-Object `
-          WindowsProductName, `
-          WindowsEditionId, `
-          WindowsVersion, `
-          OsBuildNumber, `
-          OsArchitecture
+            $cv = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+            [pscustomobject]@{
+            ProductName    = $cv.ProductName
+            EditionID      = $cv.EditionID
+            DisplayVersion = $cv.DisplayVersion
+            ReleaseId      = $cv.ReleaseId
+            CurrentBuild   = $cv.CurrentBuild
+            UBR            = $cv.UBR
+            Architecture   = (Get-CimInstance Win32_OperatingSystem).OSArchitecture
+            } | Format-List
+
 
