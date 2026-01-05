@@ -17,3 +17,13 @@ jobs:
            echo "Openssl version: $(openssl version)"
            echo "Python version: $(python --version)"
            echo "Python3 version: $(python3 --version)"
+      - name: Check Windows SKU and version
+        shell: pwsh
+        run: |
+          Get-ComputerInfo | Select-Object `
+          WindowsProductName, `
+          WindowsEditionId, `
+          WindowsVersion, `
+          OsBuildNumber, `
+          OsArchitecture
+
