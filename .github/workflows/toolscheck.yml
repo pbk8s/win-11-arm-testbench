@@ -34,7 +34,7 @@ jobs:
         shell: pwsh
         run: |
             dotnet --info
-            dotnet --list-sdks
+            dotnet --list-sdks | findstr "^10\."
             dotnet --list-runtimes
 
 
