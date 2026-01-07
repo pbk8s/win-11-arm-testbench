@@ -30,5 +30,11 @@ jobs:
             UBR            = $cv.UBR
             Architecture   = (Get-CimInstance Win32_OperatingSystem).OSArchitecture
             } | Format-List
+      - name: Check installed .NET SDKs and runtimes
+        shell: pwsh
+        run: |
+            dotnet --info
+            dotnet --list-sdks
+            dotnet --list-runtimes
 
 
