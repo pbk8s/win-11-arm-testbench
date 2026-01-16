@@ -37,13 +37,22 @@ jobs:
             dotnet --list-sdks | findstr "^10\."
             dotnet --list-runtimes
             
-      - name: Check Python versions on PATH
+      - name: List all installed Python versions
         shell: pwsh
         run: |
+          echo "=== Python launcher inventory (all registered versions) ==="
+          py -0p
+
+          echo "`n=== Default python on PATH ==="
           where python
-          where python3
           python --version
-          python3 --version
+
+          echo "`n=== Python architecture check ==="
+          python - <<'EOF'
+          import platform, sys
+          print(sys.version)
+          print("Architecture:", platform.machine())
+          EOF
 
 
 
