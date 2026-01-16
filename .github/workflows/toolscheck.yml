@@ -36,5 +36,14 @@ jobs:
             dotnet --info
             dotnet --list-sdks | findstr "^10\."
             dotnet --list-runtimes
+            
+      - name: Check Python versions on PATH
+        shell: pwsh
+        run: |
+          where python
+          where python3
+          python --version
+          python3 --version
+
 
 
