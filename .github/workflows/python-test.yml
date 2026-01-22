@@ -4,7 +4,7 @@ on:
   
 jobs:
   windows:
-    runs-on: windows-11-arm
+    runs-on: self-hosted
     steps:
             
       - name: List all installed Python versions
