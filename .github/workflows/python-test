@@ -1,0 +1,21 @@
+name: Python check
+on:
+  workflow_dispatch:
+  
+jobs:
+  windows:
+    runs-on: windows-11-arm
+    steps:
+            
+      - name: List all installed Python versions
+        shell: pwsh
+        run: |
+          Write-Host "=== Python launcher inventory (all registered versions) ==="
+          py -0p
+
+          Write-Host "`n=== Default python on PATH ==="
+          where python
+          python --version
+
+          Write-Host "`n=== Python architecture check ==="
+          python -c "import sys, platform; print(sys.version); print('Architecture:', platform.machine())"
