@@ -4,7 +4,7 @@ on:
   
 jobs:
   windows:
-    runs-on: self-hosted
+    runs-on: [self-hosted, cleanslate]
     steps:
             
       - name: List all installed Python versions
