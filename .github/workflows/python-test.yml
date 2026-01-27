@@ -4,7 +4,7 @@ on:
   
 jobs:
   windows:
-    runs-on: [self-hosted, cleanslate]
+    runs-on: [self-hosted, winimg]
     steps:
       
       - name: Setup python
