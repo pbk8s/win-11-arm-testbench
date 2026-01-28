@@ -1,0 +1,26 @@
+name: Python-test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-11-arm
+    steps:
+      - name: Setup regular Python (GIL)
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+          architecture: arm64
+
+      - name: Verify regular Python
+        shell: pwsh
+        run: |
+          python --version
+          python -c "import sys; print(sys.executable)"
+
+      - name: Setup free-threaded Python (3.14t)
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14t'
+          architecture: arm64
